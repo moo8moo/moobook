@@ -1,0 +1,419 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>creat acount</title>
+    <link rel="icon" href="../mo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .m:hover {
+            transition: 1000ms;
+            transform: rotate(360deg);
+        }
+
+        .form {
+            width: 75%;
+            /* height: 700px; */
+            border: solid 1px;
+            border-radius: 20px;
+            box-shadow: 0px 0px 6px rgb(45, 45, 45);
+            margin-top: 20px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tl {
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 0%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700px;
+        }
+
+        .display_none {
+            display: none;
+        }
+
+        .display_block {
+            display: block;
+        }
+
+        .inputs {
+            background-color: hwb(0 100% 0%);
+        }
+
+        .inputs:hover {
+            box-shadow: 0px 0px 7px rgba(45, 45, 45, 0.66);
+            transition: 150ms;
+        }
+
+        .img_div:hover {
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+        .save {
+            color: aliceblue;
+            text-align: center;
+            width: 150px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 10px;
+            background-image: linear-gradient(90deg, rgb(217, 0, 255), rgb(91, 0, 111), rgb(239, 137, 252));
+            background-size: 200% 200%;
+            transition: all 1s ease-in-out;
+        }
+
+        .save:hover {
+            animation: moveGradient .5s 2 alternate;
+        }
+
+        @keyframes moveGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .login {
+            margin-top: -7px;
+            margin-bottom: 30px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .login:hover {
+            text-decoration: underline;
+        }
+
+        .alert {
+
+            position: fixed;
+            z-index: 0;
+            top: 0px;
+            width: 100%;
+            height: 120px;
+            /* background-color: #03abb4a9; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .alert_iner {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            width: 90px;
+            background-color: rgb(0, 86, 148);
+            padding: 8px;
+            border-radius: 20px;
+            color: aliceblue;
+            transition: 300ms;
+            translate: 0px -100px;
+        }
+
+        .translate_buttom {
+            translate: 0px 0px;
+        }
+
+        .z_up {
+            z-index: 4;
+        }
+
+        @media (max-width: 450px) {
+            .form {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="display: flex; justify-content: center;">
+        <h1 class="tl">moo book</h1>
+    </div>
+
+    <div class="form">
+        <div style="display: flex; justify-content: center;">
+            <h1 class="m"
+                style="font-family:'Courier New', Courier, monospace; display: flex; justify-content: center; align-items: center; background-color: #08324d; border: solid 1px whitesmoke; width: 50px; height: 50px; border-radius: 10px; color: aliceblue; cursor: default;">
+                m
+            </h1>
+        </div>
+
+        <!-- inputs -->
+
+        <div style="width: 100%; display: flex; justify-content: center;align-items: center; gap: 5px;">
+            <h3>first name</h3>
+            <input type="text" class="inputs inp_frst_name"
+                style="width: 50%; height:40px; padding: 7px; outline: none; border: solid 1px; border-radius: 20px;font-size: large; ">
+        </div>
+        <p class="warner p_first_name"
+            style="display: none; margin-top: -10px; text-align:center; color: rgb(255, 8, 8); font-family: Arial, Helvetica, sans-serif;font-size: 15">
+            max 10 character</p>
+
+        <div style="width: 100%; display: flex; justify-content: center;align-items: center; gap: 5px;">
+            <h3>last name</h3>
+            <input type="text" class="inputs inp_last_name"
+                style="width: 50%; height: 40px; padding: 7px; outline: none; border: solid 1px; border-radius: 20px;font-size: large;">
+        </div>
+        <p class="warner p_last_name"
+            style="display: none; margin-top: -10px; text-align:center; color: rgb(255, 1, 1);font-family: Arial, Helvetica, sans-serif;font-size: 15">
+            max 10 character</p>
+
+        <div style=" width: 100%; display: flex; justify-content: center;align-items: center; gap: 5px;">
+            <h3>new email</h3>
+            <input type="text" class="inputs inp_email"
+                style="width: 50%; height: 40px; padding: 7px; outline: none; border: solid 1px; border-radius: 20px;font-size: large;">
+        </div>
+        <p class="warner p_email"
+            style="display: none; margin-top: -10px; text-align:center; color: rgb(254, 0, 0);font-family: Arial, Helvetica, sans-serif;font-size: 15 ">
+            must @ , .com</p>
+
+        <div style=" width: 100%; display: flex; justify-content: center;align-items: center; gap: 5px;">
+            <h3> password</h3>
+            <input type="text" class="inputs inp_password"
+                style="width: 50%; height: 40px; padding: 7px; outline: none; border: solid 1px; border-radius: 20px;font-size: large;">
+        </div>
+
+        <!-- photo -->
+        <h4 style="text-align:center;">profile image</h4>
+        <div style="width: 100%; display: flex; justify-content: center;">
+            <div class="img_div"
+                style="display: flex; justify-content: center; align-items: center; width: 100px; height: 100px; overflow: hidden; border-radius: 50%; border: solid 1px; margin-bottom: 20px ; ">
+                <img class="img" src="sinfoto.jpg" width="120px" alt="">
+            </div>
+        </div>
+        <input type="file" id="file_input" style="display: none;">
+
+        <div style=" width: 100%; display: flex; justify-content: center;">
+            <h2 class="save">save</h2>
+        </div>
+        <div style="text-align: center;">
+            <p class="login"> log in</p>
+        </div>
+
+    </div>
+    <div class="alert">
+        <h3 class="alert_iner">
+            <span>saved</span><i class='fas fa-check-circle' style="color: rgb(0, 197, 0);"></i>
+        </h3>
+    </div>
+    <input type="file" id="file_input" style="display: none;">
+    <script>
+        let inp_frst_name = document.querySelector('.inp_frst_name');
+        let inp_last_name = document.querySelector('.inp_last_name');
+        let inp_email = document.querySelector('.inp_email');
+        let inp_password = document.querySelector('.inp_password');
+        let p_first_name = document.querySelector('.p_first_name');
+        let p_last_name = document.querySelector('.p_last_name');
+        let p_email = document.querySelector('.p_email');
+        let save = document.querySelector('.save');
+        let login = document.querySelector('.login');
+        let img = document.querySelector('.img');
+        let img_div = document.querySelector('.img_div');
+        let alert_iner = document.querySelector('.alert_iner');
+        let allert = document.querySelector('.alert');
+        let file_input = document.getElementById('file_input');
+
+        img_div.onclick = function () {
+            file_input.click(); // فتح حوار اختيار الملفات عند النقر على img_div
+        };
+
+        file_input.addEventListener('change', function () {
+            const file = file_input.files[0]; // الحصول على الملف المختار
+            if (file) { // التحقق من أن حجم الصورة لا يتجاوز 1 ميجابايت
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const img = new Image();
+                    img.src = e.target.result;
+
+                    img.onload = function () {
+                        // تحديد حجم الصورة الجديدة
+                        const maxWidth = 800; // العرض الأقصى، يمكنك ضبطه حسب الحاجة
+                        const maxHeight = 800; // الارتفاع الأقصى، يمكنك ضبطه حسب الحاجة
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+
+                        let width = img.width;
+                        let height = img.height;
+
+                        // حساب الحجم الجديد
+                        if (width > height) {
+                            if (width > maxWidth) {
+                                height *= maxWidth / width;
+                                width = maxWidth;
+                            }
+                        } else {
+                            if (height > maxHeight) {
+                                width *= maxHeight / height;
+                                height = maxHeight;
+                            }
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+
+                        // رسم الصورة على الـ canvas
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        // تحويل الـ canvas إلى Data URL
+                        const resizedImage = canvas.toDataURL('image/jpeg', 0.8); // تغيير جودة الصورة هنا (من 0 إلى 1)
+
+                        // تخزين الصورة في localStorage
+                        localStorage.setItem('storedImage', resizedImage);
+
+                        // مسح المحتوى الحالي في img_div وإضافة الصورة الجديدة
+                        img_div.innerHTML = '';
+                        const displayImg = document.createElement('img');
+                        displayImg.src = resizedImage;
+                        displayImg.style.width = '100%';
+                        img_div.appendChild(displayImg);
+                    };
+                };
+
+                reader.readAsDataURL(file); // قراءة الملف وتحويله إلى بيانات URL
+            }
+        });
+        // استرجاع الصورة من localStorage عند إعادة تحميل الصفحة
+        // const storedImage1 = localStorage.getItem('storedImage');
+        // if (storedImage) {
+        //     const img = document.createElement('img');
+        //     img.src = storedImage;
+        //     img.style.width = '100%';
+        //     img_div.innerHTML = '';
+        //     img_div.appendChild(img);
+        // }
+        login.onclick = function () {
+            window.location.href = '../index.html';
+        }
+
+        save.onclick = function () {
+    let isValid = true;
+
+    // التحقق من صحة الاسم الأول
+    if (inp_frst_name.value.length > 10 || inp_frst_name.value === '') {
+        p_first_name.style.display = 'block';
+        inp_frst_name.style.border = 'solid 2px red';
+        isValid = false;
+    }
+
+    // التحقق من صحة الاسم الأخير
+    if (inp_last_name.value.length > 10 || inp_last_name.value === '') {
+        p_last_name.style.display = 'block';
+        inp_last_name.style.border = 'solid 2px red';
+        isValid = false;
+    }
+
+    // التحقق من صحة البريد الإلكتروني
+    const email = inp_email.value;
+    if (!email.includes('@') || !email.endsWith('.com') || email === '' ||
+        email.startsWith('@') || email[email.indexOf('@') - 1] === '.' ||
+        email[email.length - 5] === '@') {
+        p_email.style.display = 'block';
+        inp_email.style.border = 'solid 2px red';
+        isValid = false;
+    }
+
+    // التحقق من صحة كلمة المرور
+    if (inp_password.value === '') {
+        inp_password.style.border = 'solid 2px red';
+        isValid = false;
+    }
+
+    if (!isValid) {
+        return; // إذا تحقق أي من الشروط، لن يتم الحفظ
+    }
+
+    // بدء الحفظ
+    alert_iner.classList.add('translate_buttom');
+    allert.classList.add('z_up');
+
+    // بعد ثانية واحدة (1000 ميللي ثانية)، إزالة الكلاسات
+    setTimeout(function () {
+        alert_iner.classList.remove('translate_buttom');
+        setTimeout(function () { allert.classList.remove('z_up'); }, 1000);
+    }, 2000);
+
+    // تخزين البيانات في localStorage
+    localStorage.setItem('first_name', inp_frst_name.value);
+    localStorage.setItem('last_name', inp_last_name.value);
+    localStorage.setItem('email', inp_email.value);
+    localStorage.setItem('password', inp_password.value);
+    
+    // مسح الحقول بعد الحفظ
+    inp_frst_name.value = '';
+    inp_last_name.value = '';
+    inp_email.value = '';
+    inp_password.value = '';
+};
+
+        inp_frst_name.addEventListener('input', function () {
+            if (inp_frst_name.value.length <= 10) {
+                p_first_name.style.display = 'none';
+            }
+        });
+
+        inp_last_name.addEventListener('input', function () {
+            if (inp_last_name.value.length <= 10) {
+                p_last_name.style.display = 'none';
+            }
+        });
+
+        inp_email.addEventListener('input', function () {
+            // الحصول على القيمة المدخلة في عنصر الإدخال
+            const email = inp_email.value;
+
+            // التحقق من صحة البريد الإلكتروني
+            const isValidEmail = email.includes('@') && email.endsWith('.com') && email.indexOf('@') > 0;
+
+            if (isValidEmail) {
+                p_email.style.display = 'none';
+            }
+        });
+
+        inp_frst_name.onclick = function () {
+            inp_frst_name.style.border = 'solid 1px';
+        }
+        inp_last_name.onclick = function () {
+            this.style.border = 'solid 1px';
+        }
+        inp_email.onclick = function () {
+            this.style.border = 'solid 1px';
+        }
+        inp_password.onclick = function () {
+            this.style.border = 'solid 1px';
+
+        }
+
+        window.onload = function () {
+            if (localStorage.pool) {
+                if (localStorage.pool === 'true') {
+                    document.body.style.background = '#002635  ';
+                    document.body.style.color = 'white';
+                } else {
+                    document.body.style.background = 'white';
+                    document.body.style.color = 'black';
+
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

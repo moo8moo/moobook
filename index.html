@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="mo.png" type="image/x-icon">
+    <title>moo book</title>
+    <style>
+        * {
+            /* margin: 0px; */
+            /* color: #d85a5a; */
+        }
+
+        body {
+
+            margin: 0%;
+            position: relative;
+            /* background-color: transparent;  */
+            z-index: 7;
+            /* overflow: hidden; */
+        }
+
+        .bubbled-rectangle {
+            width: 60px;
+            height: 20px;
+            background-color: #3498db;
+            border-radius: 50px;
+            position: relative;
+            top: 20px;
+        }
+
+        .bubbled-rectangle:hover {
+            background-color: #0091ff;
+            cursor: pointer;
+        }
+
+        #btn {
+            border-radius: 50%;
+            background-color: #0a4f7e;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            bottom: 5px;
+            transition: 300ms;
+        }
+
+        .trn {
+            translate: 30px 0px;
+        }
+
+        .trn2 {
+            translate: 30px 0px;
+            transition: none;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+            width: 100%;
+            margin: 0px;
+            background-color: rgb(255, 255, 255);
+            /* الوضع النهاري */
+            overflow: hidden;
+        }
+
+        .main.mod {
+            background-color: rgb(5, 43, 67);
+            /* الوضع الليلي */
+        }
+
+        .sidbar {
+            width: 0px;
+            height: 100%;
+            position: fixed;
+            top: 45px;
+            left: 0%;
+            background-color: #08324d;
+            transition: 200ms;
+            z-index: 5;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .sidbar div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .open {
+            width: 250px;
+            transition: 200ms;
+        }
+
+        .box-sh {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 900ms;
+        }
+
+        .iso {
+            z-index: 2;
+            background-color: rgba(0, 0, 0, 0.357);
+            opacity: .3;
+        }
+
+        .pnr {
+            width: 100%;
+            height: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form {
+            position: relative;
+            z-index: 0;
+            border: solid lightblue;
+            border-radius: 10px;
+            width: 500px;
+            height: 400px;
+            box-shadow: 0px 0px 6px rgb(45, 45, 45);
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+        }
+
+        #sid {
+            padding: 6px 7px 6px 7px;
+            position: absolute;
+            top: 11px;
+            left: 4px;
+            z-index: 3;
+        }
+
+        #sid:hover {
+            cursor: pointer;
+            scale: 1.1;
+            transition: 300ms;
+        }
+
+        #tl {
+            display: inline-block;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 0%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+        }
+
+        .light {
+            background-color: #ffffff;
+        }
+
+        .dark {
+            background-color: #08324d;
+        }
+
+        .sid-dark {
+            width: 40px;
+            color: #08324d;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .sid-light {
+            width: 40px;
+            border-radius: 10px;
+            border: solid 1px;
+            background-color: #08324d;
+            color: #ffffff;
+            border: none;
+        }
+
+        .xo {
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0px 30px 0px 30px;
+        }
+
+        .xo:hover {
+            border-radius: 20px;
+            scale: 1.1;
+            cursor: pointer;
+            transition: 200ms;
+            background-color: #005ca2;
+            color: aliceblue;
+        }
+
+        .inp:hover {
+            box-shadow: 0px 0px 6px rgb(114, 114, 114);
+        }
+
+        .green {
+            width: 350px;
+            height: 40px;
+            font-size: x-large;
+            border-radius: 10px;
+            color: #ffffff;
+            border: none;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            background-image: linear-gradient(90deg, rgb(37, 170, 0), rgb(2, 142, 16), rgb(0, 186, 0), rgb(0, 121, 208), rgba(0, 56, 116, 0.971));
+            background-size: 200% 200%;
+            transition: all .3s ease-in-out;
+        }
+
+        .green:hover {
+            animation: moveGradient .7s 2 alternate;
+            cursor: pointer;
+            scale: 1.1;
+        }
+
+        @keyframes moveGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .m:hover {
+            transition: 1000ms;
+            transform: rotate(360deg);
+        }
+
+        .creat:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .change-type {}
+
+        @media (min-width: 300px) and (max-width: 600px) {
+            .form {
+                scale: .8;
+            }
+
+            .content {
+                display: flex;
+                justify-content: center;
+            }
+
+            input {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box-sh"></div>
+        <button id="sid"><i class="fas fa-cog"></i></button>
+        <div style="display: flex; justify-content: center;">
+            <h1 id="tl">moo book</h1>
+        </div>
+        <br>
+        <div class="content">
+            <div class="form">
+                <div style="display: flex; justify-content: center;">
+                    <h1 class="m"
+                        style="font-family:'Courier New', Courier, monospace; display: flex; justify-content: center; align-items: center; background-color: #08324d; border: solid 1px whitesmoke; width: 50px; height: 50px; border-radius: 10px; color: aliceblue; cursor: default;">
+                        m
+                    </h1>
+                </div>
+                <div action="">
+                    <div
+                        style="position: relative; left: 10px; display: flex; justify-content: center; gap: 13px; align-items: center;">
+                        <h3>email</h3>
+                        <input required class="inp inp1" type="email" placeholder="enter your email"
+                            style="padding-left: 8px; height:35px; width: 250px; border-radius: 20px; outline: none; border: solid 1px rgb(0, 40, 83); font-size: large;">
+                    </div>
+                    <div
+                        style="position: relative;left: 10px; display: flex; justify-content: center; align-items: center; gap: 10px;">
+                        <h3>password</h3>
+                        <input class="type inp inp2" required type="password" placeholder="enter your password"
+                            style="padding-left: 8px; height:35px; width: 250px; border-radius: 20px; outline: none; border: solid 1px rgb(0, 40, 83); font-size: large;">
+                        <i id="eye" class="fa fa-eye"
+                            style="position: relative; right: 33px; scale: .9; cursor: pointer;color: black;"></i>
+                    </div>
+                    <br><br>
+                    <div
+                        style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 10px;">
+                        <button class="green">log in</button>
+                    </div>
+                    <div style="display: flex;justify-content: center;">
+                        <p class="creat">dont have account</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidbar">
+                <div>
+                    <h2 style="padding: 0px 8px 0px 8px;">white</h2>
+                    <div class="bubbled-rectangle">
+                        <div id="btn"></div>
+                    </div>
+                    <h2 style="padding: 0px 8px 0px 8px;">night</h2>
+                </div>
+                <div onclick="window.location.href='xo/index.html'" class="xo"
+                    style="display: flex; justify-content: center; gap: 10px;">
+                    <h2>x&o<i class='fas fa-gamepad'></i></h2>
+                    <h2> game</h2>
+                </div>
+                <div class="xo go" style="display: flex; justify-content: center; transition: 300ms;">
+                    <h2>creat account</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let tl = document.getElementById('tl');
+        let main = document.querySelector('.main');
+        let btn = document.getElementById('btn');
+        let cont = document.querySelector('.bubbled-rectangle');
+        let sid = document.getElementById('sid');
+        let sidbar = document.querySelector('.sidbar');
+        let box = document.querySelector('.box-sh');
+        let creat = document.querySelector('.creat');
+        let go = document.querySelector('.go');
+        let eye = document.getElementById('eye');
+        let type = document.querySelector('.type');
+        let green = document.querySelector('.green');
+        let inp1 = document.querySelector('.inp1');
+        let inp2 = document.querySelector('.inp2');
+
+
+        window.onload = function () {
+            green.onclick = function () {
+                // التحقق من وجود البريد الإلكتروني وكلمة المرور في localStorage
+                if (localStorage.getItem('email') && localStorage.getItem('password')) {
+                    if (inp1.value === localStorage.email & inp2.value === localStorage.getItem('password')) {
+                        window.location.href = "page/index.html";
+                        inp1.value = '';
+                        inp2.value = '';
+                        return;
+                    }
+
+                    if (inp1.value !== localStorage.getItem('email')) {
+                        setTimeout(function () {
+                            inp1.style.border = 'solid 3px red';
+                            setTimeout(function () { inp1.style.border = 'solid 1px'; }, 1000);
+                        }, 0);
+                    }
+
+                    if (inp2.value !== localStorage.getItem('password')) {
+                        setTimeout(function () {
+                            inp2.style.border = 'solid 3px red';
+                            setTimeout(function () { inp2.style.border = 'solid 1px'; }, 1000);
+                        }, 0);
+                    }
+                }
+                else {
+                    setTimeout(function () {
+                        inp1.style.border = 'solid 3px red';
+                        inp2.style.border = 'solid 3px red';
+                        setTimeout(function () { inp2.style.border = 'solid 1px'; inp1.style.border='solid 1px';
+                        }, 1000);
+                    }, 0);
+
+                }
+            };
+            if (localStorage.pool) {
+                let m = JSON.parse(localStorage.pool);
+                if (m === true) {
+                    btn.classList.add('trn');
+                    main.classList.add('mod');
+                    document.body.style.color = 'white';
+                    tl.style.color = 'white';
+                    sidbar.classList.remove('light');
+                    sidbar.classList.add('dark');
+                    sid.classList.add('sid-dark');
+                } else {
+                    document.body.style.color = 'black';
+                    tl.style.color = 'black';
+                    sidbar.classList.add('light');
+                    sid.classList.add('sid-light');
+                }
+            } else {
+                document.body.style.color = 'black';
+                tl.style.color = 'black';
+                sidbar.classList.add('light');
+                sid.classList.add('sid-light');
+            }
+        };
+        go.onclick = function () {
+            window.location.href = 'creat_email/index.html';
+        }
+        eye.onclick = function () {
+            if (type.type !== 'password')
+                type.type = 'password';
+            else
+                type.type = 'text';
+
+        }
+        creat.onclick = function () {
+            sid.click();
+            setTimeout(() => {
+                // قم بتغيير خلفية العنصر إلى اللون الأخضر
+                go.style.background = '#d85a5a';
+
+                // بعد مرور زمن معين (مثلاً 1000 مللي ثانية أو 1 ثانية)، قم بإعادة خلفية العنصر إلى الحالة السابقة
+                setTimeout(() => {
+                    go.style.background = ''; // أو الخلفية السابقة التي تريدها
+                }, 500); // 1000 مللي ثانية هي المدة بعد التي يعود العنصر إلى الحالة السابقة
+            }, 200);
+        }
+        cont.addEventListener('click', () => {
+            if (!btn.classList.contains('trn')) {
+                btn.classList.add('trn2');
+                setTimeout(() => {
+                    btn.classList.remove('trn2');
+                    btn.classList.add('trn');
+                    localStorage.setItem('pool', true);
+                    main.classList.add('mod');
+                    document.body.style.color = 'white';
+                    tl.style.color = 'white';
+                    sidbar.classList.remove('light');
+                    sidbar.classList.add('dark');
+                    sid.classList.remove('sid-light');
+                    sid.classList.add('sid-dark');
+                }, 1);
+            } else {
+                btn.classList.remove('trn');
+                localStorage.setItem('pool', false);
+                main.classList.remove('mod');
+                document.body.style.color = 'black';
+                tl.style.color = 'black';
+                sidbar.classList.remove('dark');
+                sidbar.classList.add('light');
+                sid.classList.remove('sid-dark');
+                sid.classList.add('sid-light');
+            }
+        });
+
+        sid.addEventListener('click', () => {
+            if (sidbar.classList.contains('open')) {
+                sidbar.classList.remove('open');
+                box.classList.remove('iso');
+                box.style.opacity = '0';
+            } else {
+                sidbar.classList.add('open');
+                box.classList.add('iso');
+                box.style.opacity = '1';
+            }
+        });
+
+        box.addEventListener('click', () => {
+            if (sidbar.classList.contains('open')) {
+                sidbar.classList.remove('open');
+                box.classList.remove('iso');
+                box.style.opacity = '0';
+            }
+        });
+
+    </script>
+</body>
+
+</html>

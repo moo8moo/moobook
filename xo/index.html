@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="../mo.png"   type="image/x-icon">
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xo</title>
+    <style>
+        .box:hover {
+            background-color: rgb(45, 143, 255);
+            cursor: pointer;
+        }
+
+        #main div {
+            width: 30%;
+            height: 33%;
+            background-color: #045f83;
+            border: solid 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: xx-large;
+        }
+
+        #main div:hover {
+            background-color: rgb(0, 113, 174);
+            /* color:#002635  */
+        }
+
+        #main {
+            display: flex;
+            flex-wrap: wrap;
+            width: 380px;
+            height: 300px;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            
+            flex-direction: column;
+        }
+
+        #message {
+            font-size: x-large;
+            margin-top: 20px;
+        }
+        #message{
+            color: rgb(53, 255, 7);
+            background-color: rgb(48, 45, 45);
+            /* padding: 10px; */
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <h1 style="display: flex; gap: 10px; padding: 10px;background-color: rgb(255, 255, 255); border-radius: 25px;">
+            <span style="color: rgb(136, 42, 42);"> x </span> & <span style="color: gray;"> o </span>
+        </h1>
+    </div>
+    <div id="main">
+        <div class="box" id="d1" onclick="doo('d1')"></div>
+        <div class="box" id="d2" onclick="doo(this.id)"></div>
+        <div class="box" id="d3" onclick="doo(this.id)"></div>
+        <div class="box" id="d4" onclick="doo(this.id)"></div>
+        <div class="box" id="d5" onclick="doo(this.id)"></div>
+        <div class="box" id="d6" onclick="doo(this.id)"></div>
+        <div class="box" id="d7" onclick="doo(this.id)"></div>
+        <div class="box" id="d8" onclick="doo(this.id)"></div>
+        <div class="box" id="d9" onclick="doo(this.id)"></div>
+    </div>
+    <div id="message"></div>
+    <div id="btn-g" style="width: 100%; display: none; justify-content: center; font-size: x-large;">
+        <button style="width: 50px; height: 50px; border-radius: 20px; margin-top: 10px;" onclick="load()"><i class='fas fa-history'></i></button>
+    </div>
+    <script>
+        window.onload = function () {
+            if (localStorage.pool) {
+                if (localStorage.pool === 'true') {
+                    document.body.style.background = '#002635  ';
+                } else {
+                    document.body.style.background = 'white';
+                }
+            }
+        }
+
+        let count = 0;
+        let gameActive = true;
+        let btn_g=document.getElementById('btn-g');
+        
+        function doo(id) {
+            if (!gameActive) return;
+
+            const cell = document.getElementById(id);
+            if (cell.textContent) return; 
+
+            count++;
+            if (count % 2 === 0) {
+                cell.innerHTML = 'x';
+                cell.style.backgroundColor = '#8c382f';
+            } else {
+                cell.textContent = 'o';
+                cell.style.backgroundColor = '#396882';
+            }
+
+            if (checkWinner()) {
+                gameActive = false;
+                document.getElementById('message').textContent = `The winner is ${cell.textContent}!`;
+                document.getElementById('message').style.padding='10px';
+                btn_g.style.display='flex';
+
+            } else if (count === 9) {
+                document.getElementById('message').textContent = "It's a draw!";
+                document.getElementById('message').style.padding='10px';
+                btn_g.style.display='flex';
+
+            }
+        }
+
+        function checkWinner() {
+            const cells = [];
+            for (let i = 1; i <= 9; i++) {
+                cells.push(document.getElementById('d' + i).textContent);
+            }
+
+            const winPatterns = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+                [0, 4, 8], [2, 4, 6]             // diagonals
+            ];
+
+            return winPatterns.some(pattern => {
+                const [a, b, c] = pattern;
+                return cells[a] && cells[a] === cells[b] && cells[a] === cells[c];
+            });
+        }
+
+        function load() {
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
